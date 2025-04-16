@@ -7,7 +7,70 @@
 int main() {
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+    char opcao;
+    
+    printf("Jogo de Xadrez\n");
 
+    // repete até o usuário digitar uma opção válida
+    while (1) {
+        printf("\nEscolha uma peça para movimentar:\n");
+        printf("T. Torre\n");
+        printf("B. Bispo\n");
+        printf("Q. Rainha\n");
+        printf("X. Sair\n");
+        printf("Digite a opção: ");
+        scanf(" %c", &opcao);
+
+        if (opcao == 'T' || opcao == 't' ||
+            opcao == 'B' || opcao == 'b' ||
+            opcao == 'Q' || opcao == 'q' ||
+            opcao == 'X' || opcao == 'x') {
+            break; // Sai do while se for válido
+        } else {
+            printf("Opção inválida. Tente novamente.\n");
+        }
+    }
+
+    // Agora aqui você trata o que foi escolhido
+    switch (opcao) {
+        case 'T':
+        case 't':
+            printf("Você escolheu mover a Torre\n");
+            printf("Movendo...\n");
+            for (int t = 0; t < 5; t++) {
+                printf("Direira\n");
+            }
+            break;
+        case 'B':
+        case 'b':
+            printf("Você escolheu mover o Bispo\n");
+            printf("Movendo...\n");
+            int b = 0;
+            while (b < 5) {
+                printf("Cima direita\n");
+                b++;
+            }
+            break;
+        case 'Q':
+        case 'q':
+            printf("Você escolheu mover a Rainha\n");
+            printf("Movendo...\n");
+            int q = 0;
+            do {
+                printf("Esquerda\n");                
+                q++;
+            } while (q < 8);            
+            break;
+        case 'X':
+        case 'x':
+            printf("Saindo do jogo...\n");
+            break;
+    }
+
+    // A partir daqui, o programa continua normalmente com o que você quiser
+    // printf("Fim do programa (ainda dá pra continuar mais coisas aqui se quiser).\n");
+
+    
     // Implementação de Movimentação do Bispo
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
 
