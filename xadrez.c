@@ -4,11 +4,45 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
+void moverTorre (int t) {
+    printf("Você escolheu mover a Torre\n");
+    printf("Movendo...\n");
+    for (t = 0; t < 5; t++) {
+        printf("Direita\n");
+    }
+}
+
+void moverBispo (){
+    printf("Você escolheu mover o Bispo\n");
+    printf("Movendo...\n");
+    int movimentoBispo = 1;    
+    while(movimentoBispo--) {
+        for (int h = 0, v = 10; h < 5 && v > 5; h++, v--) {
+            printf("Diagonal Cima /"); // Imprime "Cima" cinco vezes
+            printf(" Direita\n");
+            printf("\n"); // Separa por uma linha
+        }
+        printf("\n"); // Imprime "Direita" cinco vezes
+    }
+} 
+
+void moverRainha (int q) {
+    printf("Você escolheu mover a Rainha\n");
+    printf("Movendo...\n");    
+    q = 0;
+    do {
+        printf("Esquerda\n");                
+        q++;
+    } while (q < 8);
+}
+
+
 int main() {
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
     char opcao;
     int movimentoCavalo = 1;
+    int torre = 5, rainha = 8, bispo = 5;
 
     printf("Jogo de Xadrez\n");
 
@@ -18,7 +52,7 @@ int main() {
         printf("T. Torre\n");
         printf("B. Bispo\n");
         printf("Q. Rainha\n");
-        printf("H. Cavalo\n");
+        printf("C. Cavalo\n");
         printf("X. Sair\n");
         printf("Digite a opção: ");
         scanf(" %c", &opcao);
@@ -26,7 +60,7 @@ int main() {
         if (opcao == 'T' || opcao == 't' ||
             opcao == 'B' || opcao == 'b' ||
             opcao == 'Q' || opcao == 'q' ||
-            opcao == 'H' || opcao == 'h' ||
+            opcao == 'C' || opcao == 'c' ||
             opcao == 'X' || opcao == 'x') {
             break; // Sai do while se for válido
         } else {
@@ -38,43 +72,31 @@ int main() {
     switch (opcao) {
         case 'T':
         case 't':
-            printf("Você escolheu mover a Torre\n");
-            printf("Movendo...\n");
-            for (int t = 0; t < 5; t++) {
-                printf("Direira\n");
-            }
+            moverTorre(torre);       
             break;
         case 'B':
-        case 'b':
-            printf("Você escolheu mover o Bispo\n");
-            printf("Movendo...\n");
-            int b = 0;
-            while (b < 5) {
-                printf("Cima direita\n");
-                b++;
-            }
+        case 'b':            
+            moverBispo(bispo);
             break;
         case 'Q':
         case 'q':
-            printf("Você escolheu mover a Rainha\n");
-            printf("Movendo...\n");
-            int q = 0;
-            do {
-                printf("Esquerda\n");                
-                q++;
-            } while (q < 8);            
+            moverRainha(rainha);
             break;
-        case 'H':
-        case 'h':            
-            printf("Você escolheu mover o Cavalo\n");
-            printf("Movendo...\n");
+        case 'C':
+        case 'c':            
             while(movimentoCavalo--) {
-                for (int h = 0; h < 2; h++) {
-                    printf("Baixo\n"); // Imprime "Cima" duas vezes
-                    printf("\n"); // Separa por uma linha
+                printf("Você escolheu mover o Cavalo\n"); 
+                printf("Movendo...\n");
+                    // Move na vertical
+                for (int i = 0, linha = 4; i < 2 && linha > 0; i++, linha--) {
+                    printf("Cima\n");
                 }
-                printf("Esquerda\n"); // Imprime "Direita" uma vez
-            }          
+                    // Move na horizontal
+                for (int j = 0, coluna = 3; j < 1 && coluna < 8; j++, coluna++) {
+                    printf("Direita\n");
+                }
+                
+            }         
             break;    
         case 'X':
         case 'x':
